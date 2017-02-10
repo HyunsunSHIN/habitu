@@ -5,6 +5,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Scroller;
 
 import java.util.ArrayList;
 //import android.support.v7.widget.RecyclerView;
@@ -16,25 +21,38 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<item> dataset = new ArrayList<item>();
+        final ArrayList<item> dataset = new ArrayList<item>();
 
         mContext = getApplicationContext();
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         layoutManager = new LinearLayoutManager(this);
+
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new MyAdapter(dataset);
+        adapter = new ChatAdapter(dataset);
         recyclerView.setAdapter(adapter);
 
-        dataset.add( new item( "#Seeing Far", R.mipmap.see) );
-        dataset.add( new item( "#Standing and qurious", R.mipmap.stand) );
-        dataset.add( new item(  "#gloomy and regretful", R.mipmap.close) );
+        dataset.add( new item( "Android charting application xml ui design tutorial with example. Android charting application xml ui design tutorial with example. Android charting application xml ui design tutorial with example. Android charting application xml ui design tutorial with example.", R.mipmap.see) );
+        dataset.add( new item("Android charting application xml ui design tutorial with example. Android charting application xml ui design tutorial with example. Android charting application xml ui design tutorial with example. Android charting application xml ui design tutorial with example.", R.mipmap.stand) );
+        dataset.add( new item(  "Android charting application xml ui design tutorial with example. Android charting application xml ui design tutorial with example. Android charting application xml ui design tutorial with example. Android charting application xml ui design tutorial with example.", R.mipmap.close) );
+        final EditText txt_to_send = (EditText) findViewById(R.id.txt_to_send) ;
 
-
+        ImageButton txt_send_button = (ImageButton) findViewById(R.id.txt_send_btn);
+        txt_send_button.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String msg_to_send = txt_to_send.getText().toString();
+                dataset.add(new item(msg_to_send,0));
+                recyclerView.smoothScrollToPosition(dataset.size() - 1);
+                // TODO : click event
+            }
+        });
 
         //ArrayList<item> items = new ArrayList<item>();
 

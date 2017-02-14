@@ -23,6 +23,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         mDataset = items;
     }
     // Create new views (invoked by the layout manager)
+
     @Override
     public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,int viewType)
     {

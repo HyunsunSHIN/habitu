@@ -9,20 +9,32 @@
 
 
     <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <android.support.v7.widget.RecyclerView
+
             android:id="@+id/recycler_view"
             android:scrollbars="vertical"
             android:layout_gravity = "top"
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"
+            android:layout_above="@+id/typing_area"
+            />
+
         <include
+            android:padding="10dp"
+            android:id="@+id/typing_area"
             layout="@layout/type_msg_area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
+
     </RelativeLayout>
+
+
 </LinearLayout>
